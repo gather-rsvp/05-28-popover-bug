@@ -8,10 +8,11 @@ The small bug consists in flashing the popover out of place for split seconds be
 
 - Example desktop (no bug): https://gyazo.com/44ee02b91cab92d26f533ce2b628d009
 
-To repdoruce this install the repo and
+To reproduce this install the repo and
 
 1. run `yarn install` on your terminal
 2. run `yarn native` on your terminal
 3. press `S` for expo-go simpler setup
 4. press `I` to open iOS simulator on mac
 5. wait for the app to load and click on the "Open popover" button
+6. see that the popover flashes on the right of its final position. Sometimes it even flashes at the top left corner of the screen before flashing to the right of the final position.
