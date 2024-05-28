@@ -11,6 +11,8 @@ import {
   ToastViewport,
   XStack,
   YStack,
+  Popover,
+  SizableText,
 } from '@my/ui'
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
 import { useState } from 'react'
@@ -56,6 +58,8 @@ export function HomeScreen() {
       <XStack>
         <Button {...linkProps}>Link to user</Button>
       </XStack>
+
+      <PopoverBug />
 
       {/* remove next two lines if using pages router */}
       <CustomToast />
@@ -107,5 +111,32 @@ function SheetDemo() {
         </Sheet.Frame>
       </Sheet>
     </>
+  )
+}
+
+// open this on native to see the popover flashing on different places before staying in the correct position
+function PopoverBug() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <XStack>
+      <Popover open={isOpen} onOpenChange={setIsOpen}>
+        <Popover.Trigger asChild>
+          {/* <Popover.Anchor> */}
+          <Button>Open popover</Button>
+          {/* </Popover.Anchor> */}
+        </Popover.Trigger>
+
+        <Popover.Content p="$1.5" bg="slateblue" zIndex={1}>
+          <Popover.Close asChild>
+            <YStack w={200} ai="center">
+              <SizableText color="#fff">Item 1</SizableText>
+              <SizableText color="#fff">Item 2</SizableText>
+              <SizableText color="#fff">Item 3</SizableText>
+            </YStack>
+          </Popover.Close>
+        </Popover.Content>
+      </Popover>
+    </XStack>
   )
 }
